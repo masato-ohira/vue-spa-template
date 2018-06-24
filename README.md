@@ -1,6 +1,6 @@
-# vue-dev
+# vue-spa-template
 
-https://masato-ohira.github.io/vue-dev/
+https://masato-ohira.github.io/vue-spa-template/
 
 SPA用のテンプレート
 
