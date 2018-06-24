@@ -1,5 +1,6 @@
 'use strict';
 
+import 'es6-promise/auto';
 import Vue from 'vue';
 import VueLazyload from 'vue-lazyload';
 import App from './app.vue';
