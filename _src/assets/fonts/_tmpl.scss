@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+$fontDir: '<%= fontPath %>';
+$fontName: '<%= fontName %>';
+
+@font-face {
+  font-family: '#{$fontName}';
+    src: url('#{$fontDir}#{$fontName}.eot?<%= Date.now() %>');
+    src: url('#{$fontDir}#{$fontName}.eot?#iefix&<%= Date.now() %>') format('embedded-opentype'),
+      url('#{$fontDir}#{$fontName}.woff?<%= Date.now() %>') format('woff'),
+      url('#{$fontDir}#{$fontName}.ttf?<%= Date.now() %>') format('truetype'),
+      url('#{$fontDir}#{$fontName}.svg?<%= Date.now() %>') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin <%= fontName%>-styles {
+  font-family: "#{$fontName}";
+  // vertical-align: middle;
+
+  speak: none;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.<%= fontName%> {
+  @include <%= fontName%>-styles;
+}
+
+@function <%= fontName%>-char($filename) {
+  $char: "";
+<% _.each(glyphs, function(glyph) { %>
+  @if $filename == <%= glyph.fileName %> {
+    $char: "\<%= glyph.codePoint %>";
+  }<% }); %>
+
+  @return $char;
+}
+
+@mixin <%= fontName%>($filename, $insert: before, $extend: false) {
+  @if $extend {
+    @extend .<%= fontName%>;
+  } @else {
+    @include <%= fontName%>-styles;
+  }
+  content: <%= fontName%>-char($filename);
+}
+
+<% _.each(glyphs, function(glyph) { %>.<%= fontName%>-<%= glyph.fileName %> {
+  &:before {
+    @include <%= fontName%>(<%= glyph.fileName %>);
+  }
+}
+<% }); %>

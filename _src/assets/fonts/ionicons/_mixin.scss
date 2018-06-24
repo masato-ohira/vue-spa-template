@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+@import "vars";
+
+@mixin ion($cont: ion-alert) {
+  display: inline-block;
+  font-family: "Ionicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @if $cont == ion-alert {
+    content: "\f101";
+  }
+
+  @each $i in $ion-vars {
+    @if $cont == nth($i, 1) {
+      content: nth($i, 2);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+include /_core/pug/_index
+
+doctype html
+html(lang='ja-JP')
+  head
+    meta(charset='UTF-8')
+    meta(name='description', content='')
+    title #{vars.appName}
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+    link(rel='stylesheet', href='//fonts.googleapis.com/earlyaccess/notosansjapanese.css')
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css')
+    link(rel="stylesheet", href=`${vars.assets}/css/style.css?${vars.build}`)
+  body
+    #app
+    script(src=`${vars.assets}/js/vendor.bundle.js?${vars.build}`)
+    script(src=`${vars.assets}/js/app.bundle.js?${vars.build}`)
+
