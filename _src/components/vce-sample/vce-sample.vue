@@ -38,7 +38,7 @@ export default {
     setImg() {
       let w = Sugar.Number.random(400, 800);
       let h = Sugar.Number.random(400, 800);
-      return `//placeimg.com/${w}/${h}/any`;
+      return `http://placeimg.com/${w}/${h}/any`;
     },
   },
 };

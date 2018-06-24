@@ -23,7 +23,8 @@ gulp.task('build', (callback) => {
 gulp.task('deploy', (callback) => {
   return runSequence(
     'build',
-    'git-ftp',
+    'commit',
+    'ghpage',
     callback
   );
 });
@@ -42,4 +43,8 @@ gulp.task('git-ftp', shell.task([
   `git add .`,
   `git commit -a -m 'auto commit'`,
   `git ftp push -k -s dev`,
+]));
+
+gulp.task('ghpage', shell.task([
+  'npm run ghpage',
 ]));

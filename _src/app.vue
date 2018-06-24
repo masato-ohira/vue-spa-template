@@ -2,7 +2,7 @@
 .v-app
   Header
   .v-app__cont
-    VceSample(api='//jsonplaceholder.typicode.com/posts/')
+    VceSample
 
 </template>
 <script>
