@@ -15,6 +15,7 @@ module.exports = {
     'eslint:recommended',
     'google',
   ],
+  plugins: ['html'],
   globals: {
     $: true,
     ga: true,
